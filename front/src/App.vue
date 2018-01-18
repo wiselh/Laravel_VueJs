@@ -1,16 +1,24 @@
 <template>
   <div class="container" id="app">
     <mynavbar></mynavbar>
+    <login></login>
+    <div class="clearfix" style="padding:20px"></div>
+    <register></register>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
-export default {
-  components :{
-        'mynavbar' : Navbar
+  import Navbar from './components/Navbar.vue'
+  import Login from './components/Authentication/Login.vue'
+  import Register from './components/Authentication/Register.vue'
+
+  export default {
+    components :{
+      'mynavbar' : Navbar,
+      'login' : Login,
+      'register' : Register
+    }
   }
-}
 </script>
 
 <style>
