@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from './components/Authentication/Login.vue'
 import Register from './components/Authentication/Register.vue'
+import Feed from './components/Feed.vue'
 
 
 
@@ -11,11 +12,24 @@ const router = new VueRouter({
   routes:[
     {
       path:'/login',
-      component : Login
+      component : Login,
+      meta :{
+        forVisitors : true
+      }
     },
     {
       path:'/register',
-      component : Register
+      component : Register,
+      meta :{
+        forVisitors : true
+      }
+    },
+    {
+      path:'/feed',
+      component : Feed,
+      meta:{
+        forAuth: true
+      }
     }
   ]
 })

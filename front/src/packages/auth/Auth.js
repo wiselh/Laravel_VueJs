@@ -20,7 +20,8 @@ export default function(Vue) {
         localStorage.removeItem('token')
         localStorage.removeItem('experation')
       },
-      isAuhtenticated () {
+
+      isAuthenticated () {
           if (this.getToken())
             return true
           else

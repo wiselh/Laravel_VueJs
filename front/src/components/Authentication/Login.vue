@@ -46,6 +46,7 @@ export default{
       this.$http.post('http://localhost:8000/oauth/token',data)
       .then(response=>{
           this.$auth.setToken(response.body.access_token,response.body.expires_in + Date.now())
+          this.$router.push('/feed')
         })
       // .then(function(response) {
       //     console.log(response)
