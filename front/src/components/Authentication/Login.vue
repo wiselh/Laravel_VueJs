@@ -18,7 +18,7 @@
                         type="password"
                         placeholder="Password">
                 </div>
-                <button @click="test" class="btn btn-success pull-right">
+                <button @click="login" class="btn btn-success pull-right">
                     Login
                 </button>
               </div>
@@ -35,12 +35,21 @@ export default{
     };
   },
   methods: {
-    test() {
-      this.$http.get('http://localhost:8000/api/test')
-      .then(
-        function(response) {
+    login() {
+      var data = {
+          client_id : 2,
+          client_secret : 'Wl6678LxzvK5Kdrg2ABS6s3JB2nOaBsXV9y7f2yF',
+          grant_type :'password',
+          username : this.email,
+          password : this.password
+      }
+      this.$http.post('http://localhost:8000/oauth/token',data)
+      .then(response=>{
           console.log(response)
         })
+      // .then(function(response) {
+      //     console.log(response)
+      //   })
 
     }
   }
