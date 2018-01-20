@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Login from './components/Authentication/Login.vue'
 import Register from './components/Authentication/Register.vue'
 import Feed from './components/Feed.vue'
-
+import Create from './components/product/Create.vue'
 
 
 Vue.use(VueRouter)
@@ -27,6 +27,13 @@ const router = new VueRouter({
     {
       path:'/feed',
       component : Feed,
+      meta:{
+        forAuth: true
+      }
+    },
+    {
+      path:'/products/create',
+      component : Create, // require('./components/product/Create.vue') not working
       meta:{
         forAuth: true
       }
