@@ -31,7 +31,9 @@ const router = new VueRouter({
         forAuth: true
       }
     }
-  ]
+  ],
+  linkActiveClass:'active',
+  mode : 'history' //to remove # in url
 })
 
 export default router
