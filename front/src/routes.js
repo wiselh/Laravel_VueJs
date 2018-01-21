@@ -4,6 +4,8 @@ import Login from './components/Authentication/Login.vue'
 import Register from './components/Authentication/Register.vue'
 import Feed from './components/Feed.vue'
 import Create from './components/product/Create.vue'
+import Edit from './components/product/Edit.vue'
+import Details from './components/product/Details.vue'
 
 
 Vue.use(VueRouter)
@@ -34,6 +36,20 @@ const router = new VueRouter({
     {
       path:'/products/create',
       component : Create, // require('./components/product/Create.vue') not working
+      meta:{
+        forAuth: true
+      }
+    },
+    {
+      path:'/products/:product/edit',
+      component : Edit, // require('./components/product/Edit.vue') not working
+      meta:{
+        forAuth: true
+      }
+    },
+    {
+      path:'/products/:product/details',
+      component : Details, // require('./components/product/Details.vue') not working
       meta:{
         forAuth: true
       }

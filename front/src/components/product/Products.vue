@@ -1,6 +1,7 @@
 <template>
   <div class='row'>
         <my-product v-for="product in products"
+                    :key="product.id"
                     :product='product'
                     @delete-product='deleteProduct(product)'
                     :authenticatedUser ='authenticatedUser'></my-product>

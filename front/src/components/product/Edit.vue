@@ -1,7 +1,9 @@
 <template>
-    <div class='row'>
+    <div class='container'>
+      <h2 class='text-center'>Edit Product</h2>
       <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
+
 	           <div class="panel-body">
 		              <div class='form-group'>
                     <label for="name">Name</label>
@@ -16,7 +18,7 @@
                     <textarea name="description" id="" cols="3" rows="5" class='form-control' v-model='product.description'></textarea>
                   </div>
                   <button class='btn btn-success pull-right'
-                    @click='create'>Create</button>
+                    @click='update'>Update</button>
              </div>
        </div>
       </div>
@@ -25,20 +27,31 @@
 
 <script>
   export default {
+    created(){
+        this.getProduct()
+    },
     data(){
       return {
-        product :{
-          name: '',
-          price : 0,
-          description : ''
-        }
+        product :{}
       }
     },
     methods: {
-      create() {
-         this.$http.post('api/products',this.product)
+      getProduct(){
+        //get product
+        this.$http.get('api/products/'+this.$route.params.product)
+          .then(response=>{
+            this.product = response.body // set product data
+            }
+
+          )
+      },
+      update() {
+         this.$http.put('api/products/'+this.$route.params.product,this.product)
          .then(response=>{
-           this.$router.push('/feed')
+           // Popup
+           swal("Updated","Your product has been updated!", {
+               icon: "success",
+           });
          })
       }
     }

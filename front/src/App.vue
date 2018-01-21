@@ -2,7 +2,6 @@
   <div class="container" id="app">
     <mynavbar></mynavbar>
     <router-view></router-view>
-    <div class="clearfix" style="padding:20px"></div>
   </div>
 </template>
 
