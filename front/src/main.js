@@ -11,12 +11,15 @@ Vue.use(Auth)
 Vue.http.options.root = 'http://127.0.0.1:8000'
 Vue.http.headers.common['Authorization'] ='Bearer '+ Vue.auth.getToken();
 
+// catching errors
 Vue.http.interceptors.push((request,next)=>{
   next(response=>{
-    if (response.status==404) swal(response.status.toString(),response.body.error, {icon: "error"});
-    else if (response.status==500) swal(response.status.toString(),'Server error', {icon: "error"});
+    if (response.status==404) window.location.href = '/404'
+    else if (response.status==500) Router.push('/500')
+
   })
 })
+// swal(response.status.toString(),'Server error', {icon: "error"});
 
 Router.beforeEach(
   (to,from,next) => {
@@ -42,3 +45,5 @@ new Vue({
   render: h => h(App),
   router: Router
 })
+
+// export default router

@@ -6,6 +6,8 @@ import Feed from './components/Feed.vue'
 import Create from './components/product/Create.vue'
 import Edit from './components/product/Edit.vue'
 import Details from './components/product/Details.vue'
+import Err404 from './components/Errors/404.vue'
+import Err500 from './components/Errors/500.vue'
 
 
 Vue.use(VueRouter)
@@ -53,6 +55,14 @@ const router = new VueRouter({
       meta:{
         forAuth: true
       }
+    },
+    {
+      path:'/404',
+      component : Err404, // require('./components/product/Details.vue') not working
+    },
+    {
+      path:'/500',
+      component : Err500, // require('./components/product/Details.vue') not working
     }
   ],
   linkActiveClass:'active',

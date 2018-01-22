@@ -72,7 +72,7 @@
                                   icon: "success",
                               });
                               this.$router.push('/feed')
-                              
+
                               let index = this.products.indexOf(product)
                               this.products.splice(index,1) // to remove the product from vue after delete it
                             })

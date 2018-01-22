@@ -42,7 +42,7 @@
           .then(response=>{
             this.product = response.body // set product data
             })
-          
+
       },
       update() {
          this.$http.put('api/products/'+this.$route.params.product,this.product)
