@@ -2,7 +2,7 @@
 
 <div class="col-md-4">
     <div class="thumbnail myhover">
-        <img src="https://cdn4.iconfinder.com/data/icons/pretty_office_3/256/packing.png">
+        <img :src="'http://localhost:8000/Products/'+product.image" style=  'height:119px'>
         <div class="caption">
             <span class="pull-right">User ID : {{product.user_id}}</span>
             <h3>{{ product.name }}</h3>

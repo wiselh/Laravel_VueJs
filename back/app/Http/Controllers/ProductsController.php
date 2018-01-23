@@ -15,8 +15,27 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-      $product = Product::create($request->all() +['user_id'=>Auth::id()]);
+      // Image Upload
+      $exploded = explode(',',$request->image);
+      $decoded  = base64_decode($exploded[1]);
 
+      if (str_contains($exploded[0],'jpeg'))
+          $extention ='jpg';
+      else
+          $extention ='png';
+
+      $fileName = $request->name.'_'.date("d-m-Y").'_'.date("h-i-sa").'.'.$extention;
+
+      $path = public_path().'\\Products\\'.$fileName;
+      file_put_contents($path,$decoded);
+
+
+
+      $product = Product::create($request->except('image') + [
+        'user_id'=>Auth::id(),
+        'image'=>$fileName
+      ]);
+      //
       return $product;
     }
 
